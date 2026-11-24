@@ -2,8 +2,35 @@
 
 [![Quest](https://img.shields.io/badge/Quest-%2315579%20(FIXED)-blue)](https://github.com/pollinations/pollinations/issues/15579)
 [![Godot](https://img.shields.io/badge/Godot-4.3%2B-478bff)](https://godotengine.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 GDScript add-on that lets Godot 4 developers generate **text, images, and speech** with [Pollinations AI](https://pollinations.ai) inside their games.
+
+## À propos
+
+This add-on exposes `PollinationsClient`, `ModelCatalog` and Text/Image/Speech generator nodes for Godot 4. It supports async generation via Promises, a live model catalog, and OAuth 2.0 Device Flow (BYOP) so players can pay with their own Pollen.
+
+## Structure
+
+```
+addon/pollinations/
+├── plugin.gd
+├── plugin.cfg
+├── pollinations_client.gd
+├── pollinations_text.gd
+├── pollinations_image.gd
+├── pollinations_speech.gd
+└── model_catalog.gd
+example_scene.tscn
+CHANGELOG.md
+LICENSE
+```
+
+## Stack
+
+- Godot 4.3+
+- GDScript
+- Pollinations AI API (gen.pollinations.ai, image.pollinations.ai, enter.pollinations.ai)
 
 ## Features
 
@@ -12,15 +39,8 @@ GDScript add-on that lets Godot 4 developers generate **text, images, and speech
 - **Live model catalog** — fetch available text, image, and audio models
 - **OAuth 2.0 Device Flow** (BYOP) — players pay with their own Pollen
 - **Example scene** included
-- Submit to Godot Asset Library
 
 ## Installation
-
-### Via Godot Asset Library (coming soon)
-
-1. Open Godot 4
-2. Go to **AssetLib → Search "Pollinations"**
-3. Click **Download** and enable the plugin
 
 ### Manual
 
@@ -34,12 +54,10 @@ GDScript add-on that lets Godot 4 developers generate **text, images, and speech
 ### Setup
 
 ```gdscript
-# Create a client and assign your API key
 var client = PollinationsClient.new()
 client.api_key = "sk_..." # Get one at https://enter.pollinations.ai/keys
 add_child(client)
 
-# Optionally fetch live models
 var catalog = ModelCatalog.new(client)
 add_child(catalog)
 await catalog.refresh()
@@ -52,7 +70,7 @@ var gen = PollinationsText.new()
 gen.client = client
 gen.prompt = "Describe a fantasy tavern"
 var text = await gen.generate()
-print(text)  # generated text
+print(text)
 ```
 
 ### Generate an image
@@ -64,7 +82,6 @@ gen.prompt = "A cyberpunk city at night"
 gen.width = 512
 gen.height = 512
 var tex = await gen.generate()
-# Apply to a Quad or save to disk
 gen.save_to_disk("user://output.png")
 ```
 
@@ -76,7 +93,6 @@ gen.client = client
 gen.prompt = "Hello, adventurer!"
 gen.voice = "nova"
 var clip = await gen.generate()
-# Play on AudioStreamPlayer
 var player = AudioStreamPlayer.new()
 add_child(player)
 gen.play_on(player)
@@ -100,10 +116,7 @@ Players can authenticate with their own Pollinations account:
 var auth = PollinationsAuth.new()
 auth.client_id = "pk_..."
 var result = await auth.start_device_flow()
-# Show user: result.verification_uri + result.user_code
-# User visits URL, enters code
 
-# Poll for token
 while result.state == DeviceFlowState.Pending:
     result = await auth.poll_token(result.device_code)
     await get_tree().create_timer(5.0).timeout
@@ -112,9 +125,13 @@ if result.state == DeviceFlowState.Granted:
     client.api_key = result.access_token
 ```
 
-## License
+## Contribution
 
-MIT — see [CHANGELOG.md](CHANGELOG.md) for release notes.
+Contributions welcome. Open an issue or PR; keep changes focused.
+
+## Licence
+
+MIT — see [LICENSE](LICENSE). See [CHANGELOG.md](CHANGELOG.md) for release notes.
 
 ## Quest
 
