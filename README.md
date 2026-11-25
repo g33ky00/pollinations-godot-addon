@@ -1,5 +1,7 @@
 # Pollinations Godot Add-on
 
+[![CI](https://github.com/g33ky00/pollinations-godot-addon/actions/workflows/ci-unified.yml/badge.svg)](https://github.com/g33ky00/pollinations-godot-addon/actions/workflows/ci-unified.yml)
+
 [![Quest](https://img.shields.io/badge/Quest-%2315579%20(FIXED)-blue)](https://github.com/pollinations/pollinations/issues/15579)
 [![Godot](https://img.shields.io/badge/Godot-4.3%2B-478bff)](https://godotengine.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -136,3 +138,15 @@ MIT — see [LICENSE](LICENSE). See [CHANGELOG.md](CHANGELOG.md) for release not
 ## Quest
 
 This add-on fulfills [Quest #15579](https://github.com/pollinations/pollinations/issues/15579) — _[QUEST] Pollinations add-on for Godot 4_
+
+## About
+
+Projet maintenu par g33ky00.
+
+## Contributing
+
+Les contributions sont les bienvenues via pull request.
+
+## License
+
+MIT
