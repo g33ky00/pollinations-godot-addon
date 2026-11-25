@@ -8,7 +8,7 @@
 
 GDScript add-on that lets Godot 4 developers generate **text, images, and speech** with [Pollinations AI](https://pollinations.ai) inside their games.
 
-## À propos
+## About
 
 This add-on exposes `PollinationsClient`, `ModelCatalog` and Text/Image/Speech generator nodes for Godot 4. It supports async generation via Promises, a live model catalog, and OAuth 2.0 Device Flow (BYOP) so players can pay with their own Pollen.
 
@@ -127,11 +127,11 @@ if result.state == DeviceFlowState.Granted:
     client.api_key = result.access_token
 ```
 
-## Contribution
+## Contributing
 
 Contributions welcome. Open an issue or PR; keep changes focused.
 
-## Licence
+## License
 
 MIT — see [LICENSE](LICENSE). See [CHANGELOG.md](CHANGELOG.md) for release notes.
 
@@ -141,11 +141,11 @@ This add-on fulfills [Quest #15579](https://github.com/pollinations/pollinations
 
 ## About
 
-Projet maintenu par g33ky00.
+Project maintained by g33ky00.
 
 ## Contributing
 
-Les contributions sont les bienvenues via pull request.
+Contributions are welcome via pull request.
 
 ## License
 
